@@ -11,8 +11,8 @@ export const Header = ({ info }) => {
           <p className="subtitle">{info.title}</p>
           <p className="description">{info.bio}</p>
           <div className="button-group">
-            <a href="#contact" className="button button-secondary">Get In Touch</a>
-            <a href="" className="button button-primary">Download Resume</a>
+            <a href="#contact" className="contact-icon-link">Get In Touch</a>
+            <a href="" className="contact-icon-link">Download Resume</a>
           </div>
         </div>
       </div>
