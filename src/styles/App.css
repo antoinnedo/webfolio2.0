@@ -1,0 +1,644 @@
+/*
+================================================
+--- Portfolio Stylesheet ---
+---      (New Theme)       ---
+================================================
+*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+/*
+--- 1. Root Variables & Global Styles ---
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* New Theme Variables */
+  --ff: "Montserrat", sans-serif;
+  --colorp: #f9f9f9;
+  --colorp2: #fff;
+  --colora: #ffe537;
+  --colora2: #537fe7;
+  --colorbody: #1e1e1e;
+  --colors: #333;
+  --colorgray: hsl(0, 0%, 60%);
+  --graygradient: linear-gradient(45deg, hsl(0, 0%, 20%), hsl(0, 0%, 15%));
+
+  /* New Shadow Variable */
+  --shadow-combined: 0px 4px 4px #00000030, 0px 12px 12px #00000015;
+
+  /* Layout & Font Shorthands */
+  --h2: bold clamp(2rem, 2.5vw, 3rem)/1.5 var(--ff);
+  --p: 1rem/1.8 var(--ff);
+
+  /* Transitions */
+  --transition-speed-fast: 0.2s;
+  --transition-speed-normal: 0.3s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--colorbody);
+  color: var(--colorp);
+  font: var(--p);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* New main content wrapper */
+.main-content {
+  margin-left: 7rem;
+  width: calc(100% - 7rem);
+}
+
+
+section {
+  padding: 3.75rem 1.25rem;
+  text-align: center;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
+  color: var(--colorp);
+  font-family: var(--ff);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font: var(--h2);
+  margin-bottom: 2.5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+/*
+--- 2. Header / Intro Section ---
+*/
+/* Note: The parent <section> tag now provides the min-height */
+#header-intro {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Remove padding to make it fit the viewport perfectly */
+  padding: 0;
+}
+
+.intro-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: var(--graygradient);
+  padding: 3.125rem;
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-combined);
+  max-width: 68.75rem;
+  width: 100%;
+  transition: transform var(--transition-speed-normal) ease;
+}
+
+.intro-card:hover {
+  transform: translateY(-0.75rem);
+}
+
+.intro-photo {
+  width: 15.625rem;
+  height: 15.625rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 3.125rem;
+  border: 0.3125rem solid var(--colora2);
+}
+
+.intro-text {
+  text-align: left;
+}
+
+.intro-text h1 {
+    color: var(--colora);
+}
+
+.intro-text .subtitle {
+  font-size: 1.5rem;
+  color: var(--colorgray);
+  margin-bottom: 1rem;
+}
+
+/*
+--- 3. Projects Section ---
+*/
+.projects-grid {
+  columns: 4 250px;
+  column-gap: 1.5rem;
+}
+
+.project-card {
+  width: 100%;
+  position: relative;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  break-inside: avoid;
+  cursor: pointer;
+  box-shadow: var(--shadow-combined);
+}
+
+.project-image-container {
+  position: relative;
+  width: 100%;
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1.25rem;
+}
+
+.project-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: all var(--transition-speed-normal) ease;
+  box-sizing: border-box;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, transparent);
+  border-radius: 0 0 1.25rem 1.25rem;
+}
+
+.project-card:hover .project-details {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-details h3 {
+  margin-top: 0;
+  margin-bottom: 0.625rem;
+  font-size: 1.5rem;
+  color: var(--colora);
+}
+
+.project-details p {
+  margin-bottom: 1rem;
+  color: var(--colorgray);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.project-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  background-color: var(--colora2);
+  color: var(--colorp);
+  padding: 0.3rem 0.75rem;
+  border-radius: 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: transform var(--transition-speed-fast) ease;
+}
+
+
+/*
+--- 4. Education Section ---
+*/
+.education-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.875rem;
+    max-width: 56.25rem;
+    margin: 0 auto;
+}
+
+.education-card {
+  background: var(--graygradient);
+  padding: 1.875rem;
+  border-radius: 1.25rem;
+  text-align: left;
+  box-shadow: var(--shadow-combined);
+  transition: transform var(--transition-speed-normal) ease;
+}
+
+.education-card:hover {
+  transform: translateY(-0.75rem);
+}
+
+.education-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--colorp);
+    font-size: 1.5rem;
+}
+
+.education-card .degree {
+    margin: 0;
+    color: var(--colora2);
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+}
+
+.education-card .meta {
+    color: var(--colorgray);
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+}
+
+.education-card ul {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+    margin: 0;
+    color: var(--colorgray);
+    line-height: 1.6;
+}
+
+
+/*
+--- 5. Experience Section ---
+*/
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+  max-width: 56.25rem;
+  margin: 0 auto;
+}
+
+.experience-card {
+  background: var(--graygradient);
+  padding: 1.875rem;
+  border-radius: 1.25rem;
+  text-align: left;
+  box-shadow: var(--shadow-combined);
+  transition: transform var(--transition-speed-normal) ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-0.75rem);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.experience-header .company-role h3 {
+  margin: 0 0 0.3rem 0;
+  color: var(--colorp);
+  font-size: 1.5rem;
+}
+.experience-header .company-role p {
+  margin: 0;
+  color: var(--colora2);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.experience-header .duration-location {
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: 1.25rem;
+}
+
+.experience-header .duration-location h3 {
+  margin: 0 0 0.3rem 0;
+  color: var(--colorp);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.experience-header .duration-location p {
+  margin: 0;
+  color: var(--colora2);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.experience-description {
+  margin-bottom: 1.25rem;
+  color: var(--colorgray);
+  line-height: 1.6;
+}
+
+.experience-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.experience-skills .tech-tag {
+  background-color: var(--colors);
+}
+
+
+/*
+--- 6. Skills Section ---
+*/
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.skill-card {
+  background: var(--graygradient);
+  padding: 1.875rem;
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-combined);
+  transition: transform var(--transition-speed-normal) ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-0.75rem);
+}
+
+.skill-card h3 {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  border-bottom: 0.125rem solid var(--colora);
+  padding-bottom: 0.625rem;
+  color: var(--colora);
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.skill-item {
+  background-color: var(--colors);
+  color: var(--colorp);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+}
+
+
+/*
+--- 7. Contact Section ---
+*/
+.contact-card {
+  background: var(--graygradient);
+  padding: 2.5rem;
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-combined);
+  transition: transform var(--transition-speed-normal) ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-0.75rem);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.875rem;
+}
+
+.contact-icon-link {
+  display: inline-block;
+  background-color: var(--colors);
+  color: var(--colorp) !important;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease;
+}
+
+.contact-icon-link:hover {
+  background-color: var(--colora2);
+  transform: scale(1.05);
+  color: var(--colorp) !important;
+}
+
+/*
+--- 8. Side Navigation Bar ---
+*/
+.sidebar-nav {
+  width: 7rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--colorbody);
+  border-right: 1px solid var(--colors);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0;
+  z-index: 100;
+}
+
+.sidebar-nav .nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.sidebar-nav .nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  text-decoration: none;
+  color: var(--colorgray);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  width: 80%;
+  transition: all var(--transition-speed-fast) ease;
+}
+
+.sidebar-nav .nav-link svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--colorgray);
+  transition: all var(--transition-speed-fast) ease;
+}
+
+.sidebar-nav .nav-link:hover,
+.sidebar-nav .nav-link.active {
+  background-color: var(--colora2);
+  color: var(--colorp);
+}
+
+.sidebar-nav .nav-link:hover svg,
+.sidebar-nav .nav-link.active svg {
+  fill: var(--colorp);
+}
+
+
+/*
+--- 9. Scroll To Top Button ---
+*/
+.bottom-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+}
+
+.bottom-float .button {
+  width: 3.125rem; /* 50px */
+  height: 3.125rem; /* 50px */
+  border-radius: 50%;
+  background-color: var(--colors);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 0px 4px rgba(83, 127, 231, 0.25); /* colora2 with transparency */
+  cursor: pointer;
+  transition: all var(--transition-speed-normal) ease;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+}
+
+.bottom-float .svgIcon {
+  width: 0.75rem; /* 12px */
+  transition: transform var(--transition-speed-normal) ease;
+}
+
+.bottom-float .svgIcon path {
+  fill: var(--colorp);
+}
+
+.bottom-float .button:hover {
+  width: 8.75rem; /* 140px */
+  border-radius: 3.125rem; /* 50px */
+  background-color: var(--colora2);
+}
+
+.bottom-float .button:hover .svgIcon {
+  transform: translateY(-200%);
+}
+
+.bottom-float .button::before {
+  position: absolute;
+  content: "Back to Top";
+  color: var(--colorp);
+  font-size: 0rem;
+  font-family: var(--ff);
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: all var(--transition-speed-normal) ease;
+}
+
+.bottom-float .button:hover::before {
+  font-size: 0.8125rem; /* 13px */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/*
+--- 10. Responsive Design ---
+*/
+
+@media (max-width: 1200px) {
+    .projects-grid { columns: 3 250px; }
+}
+
+@media (max-width: 992px) {
+    .projects-grid { columns: 2 250px; }
+    .sidebar-nav { display: none; }
+    /* Remove the margin and reset width when sidebar is hidden */
+    .main-content { 
+      margin-left: 0;
+      width: 100%;
+    }
+}
+
+@media (max-width: 62rem) {
+  .intro-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro-photo {
+    margin-right: 0;
+    margin-bottom: 1.875rem;
+  }
+
+  .intro-text {
+    text-align: center;
+  }
+}
+
+@media (max-width: 48rem) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .skills-grid, .contact-grid, .projects-grid {
+    grid-template-columns: 1fr;
+    columns: 1;
+  }
+
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+  }
+
+  .experience-header .duration-location {
+    text-align: left;
+  }
+}
+
+@media (max-width: 30rem) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .bottom-float {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
