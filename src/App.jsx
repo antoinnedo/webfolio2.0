@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import theme from './styles/theme';
+import { GlobalStyles } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
+import { createAppTheme } from './styles/theme';
 import './styles/App.css';
 
 import { customColors } from './styles/colors';
@@ -53,11 +55,11 @@ const projectsData = [
       image: pongDemo,
       link: 'https://github.com/antoinnedo/Pong-Java'
     }, {
-      title: 'Hangman Game',
-      desc: 'Classic word-guessing game with dynamic word selection and interactive console interface.',
+      title: 'Chess Board',
+      desc: 'Complete chess implementation in Ruby featuring all piece movements, castling, en passant, check/checkmate detection, and console-based interface.',
       tech: ['Ruby'],
-      image: hangMan,
-      link: 'https://github.com/antoinnedo/hangman'
+      image: chessGame,
+      link: 'https://github.com/antoinnedo/chess-Ruby'
     }, {
       title: '2048',
       desc: 'Implementation of the popular number puzzle game with smooth animations and responsive design. Built with vanilla JavaScript for optimal performance.',
@@ -77,11 +79,11 @@ const projectsData = [
       image: connectFour,
       link: 'https://github.com/antoinnedo/connect_four_ruby'
     }, {
-      title: 'Chess Board',
-      desc: 'Complete chess implementation in Ruby featuring all piece movements, castling, en passant, check/checkmate detection, and console-based interface.',
+      title: 'Hangman Game',
+      desc: 'Classic word-guessing game with dynamic word selection and interactive console interface.',
       tech: ['Ruby'],
-      image: chessGame,
-      link: 'https://github.com/antoinnedo/chess-Ruby'
+      image: hangMan,
+      link: 'https://github.com/antoinnedo/hangman'
     }
 ];
 
@@ -155,44 +157,55 @@ export const App = () => {
     };
   }, []);
 
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    return localStorage.getItem('darkmode') === 'active';
-  });
+  // Updated theme state management - removed localStorage for Claude.ai compatibility
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
+  // Updated theme application
   useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('darkmode');
-      localStorage.setItem('darkmode', 'active');
-    } else {
-      document.body.classList.remove('darkmode');
-      localStorage.setItem('darkmode', 'inactive');
-    }
-  },[isDarkMode]);
+    const root = document.documentElement;
+    const colorScheme = isDarkMode ? customColors.dark : customColors.light;
 
+    // Set CSS custom properties
+    root.style.setProperty('--background-primary', colorScheme.backgroundPrimary);
+    root.style.setProperty('--background-secondary', colorScheme.backgroundSecondary);
+    root.style.setProperty('--background-card', colorScheme.backgroundCard);
+    root.style.setProperty('--text-primary', colorScheme.textPrimary);
+    root.style.setProperty('--text-secondary', colorScheme.textSecondary);
+    root.style.setProperty('--accent-primary', colorScheme.accentPrimary);
+    root.style.setProperty('--accent-secondary', colorScheme.accentSecondary);
+    root.style.setProperty('--border-color', colorScheme.border);
+    root.style.setProperty('--shadow-color', colorScheme.shadow);
+
+    // Update body class for any additional styling
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+      document.body.classList.remove('light-mode');
+    } else {
+      document.body.classList.add('light-mode');
+      document.body.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
 
   const handleToggle = () => {
-      setIsDarkMode(prevMode => !prevMode);
-    };
+    setIsDarkMode(prevMode => !prevMode);
+  };
 
   const theme = useMemo(
-      () =>
-        createTheme({
-          palette: {
-            // This is the key! It tells MUI the mode.
-            mode: isDarkMode ? 'dark' : 'light',
-
-            // You can still add your custom colors
-            custom: {
-              colorp: customColors.brand.colorp,
-              colorbody: customColors.brand.colorbody,
-            },
-          },
-        }),
-      [isDarkMode],
-    );
+    () => createAppTheme(isDarkMode),
+    [isDarkMode],
+  );
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <GlobalStyles
+        styles={{
+          body: {
+            backgroundColor: 'var(--background-primary)',
+            color: 'var(--text-primary)',
+          },
+        }}
+      />
       <SidebarNav activeSection={activeSection} />
       <ThemeToggle isDarkMode={isDarkMode} onToggle={handleToggle} />
       <div className="main-content">
