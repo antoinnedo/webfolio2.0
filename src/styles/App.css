@@ -22,6 +22,11 @@
   /* New Shadow Variable */
   --shadow-combined: 0px 4px 4px #00000030, 0px 12px 12px #00000015;
 
+  /* Glow */
+  --shadow-glow-subtle: 0 0 20px rgba(0, 0, 0, 0.08);
+  --shadow-glow-blue: 0 0 25px -5px rgba(59, 130, 246, 0.15);
+  --shadow-glow-white: 0 0 15px rgba(255, 255, 255, 0.1);
+
   /* Layout & Font Shorthands */
   --h2: bold clamp(2rem, 2.5vw, 3rem)/1.5 var(--ff);
   --p: 1rem/1.8 var(--ff);
@@ -184,18 +189,16 @@ h3 {
   flex-direction: column;
   justify-content: flex-end;
   text-align: left;
-  opacity: 0;
-  transform: translateY(1rem);
+  opacity: 0%;
   transition: all var(--transition-speed-normal) ease;
   box-sizing: border-box;
-  background: #000000c3;
   border-radius: 0 0 1.25rem 1.25rem;
 }
 
 .project-card:hover .project-details {
-  opacity: 80%;
+  background-color: #00000080;
+  opacity: 1;
   transform: translateY(0);
-  background-color: #000000;
   backdrop-filter: blur(12px);
 }
 
@@ -203,6 +206,68 @@ h3 {
   transform: translateY(-1rem);
 }
 
+
+
+.github-float {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+.github-float .button {
+  width: 3.125rem; /* 50px */
+  height: 3.125rem; /* 50px */
+  border-radius: 50%;
+  background-color: var(--colors);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 0px 4px rgba(83, 127, 231, 0.25); /* colora2 with transparency */
+  cursor: pointer;
+  transition: all var(--transition-speed-normal) ease;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+}
+
+.github-float .github-link {
+  transition: transform var(--transition-speed-normal) ease;
+}
+
+.github-float .github-link {
+  fill: var(--colorp);
+}
+
+.github-float .button:hover {
+  width: 8.75rem; /* 140px */
+  border-radius: 3.125rem; /* 50px */
+  background-color: var(--colora2);
+}
+
+.github-float .button:hover .github-link {
+  transform: translateY(-200%);
+}
+
+.github-float .button::before {
+  position: absolute;
+  content: "Github";
+  color: var(--colorp);
+  font-size: 0rem;
+  font-family: var(--ff);
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: all var(--transition-speed-normal) ease;
+}
+
+.github-float .button:hover::before {
+  font-size: 0.8125rem; /* 13px */
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .project-details h3 {
   margin-top: 0;
@@ -248,6 +313,7 @@ h3 {
 }
 
 .education-card {
+
   background: var(--graygradient);
   padding: 1.875rem;
   border-radius: 1.25rem;
@@ -261,14 +327,15 @@ h3 {
 }
 
 .education-card h3 {
-    margin: 0 0 0.5rem 0;
-    color: var(--colora);
-    font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--colora);
+  font-size: 1.5rem;
 }
 
 .education-header {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: flex-start;
   margin-bottom: 1rem;
 }
@@ -286,8 +353,9 @@ h3 {
 }
 
 .education-header .duration-location {
+
   text-align: right;
-  flex-shrink: 0;
+  flex-shrink: 1;
   margin-left: 1.25rem;
 }
 
@@ -482,8 +550,8 @@ h3 {
 .hamburger-container {
   display: none;
   position: fixed;
-  bottom: 1.5rem; 
-  left: 1.5rem;  
+  bottom: 1.5rem;
+  left: 1.5rem;
   z-index: 1001;
 }
 
@@ -504,7 +572,7 @@ h3 {
 .hamburger-btn {
   background: none;
   border: none;
-  padding: 0; 
+  padding: 0;
   cursor: pointer;
 }
 
@@ -655,7 +723,7 @@ h3 {
 @media (max-width: 992px) {
   /* Other rules like .projects-grid and .main-content */
   .projects-grid { columns: 2 250px; }
-  .main-content { 
+  .main-content {
     margin-left: 0;
     width: 100%;
   }
@@ -705,7 +773,7 @@ h3 {
     text-align: left;
   }
 
-  
+
   .hamburger-container {
     display: block;
   }

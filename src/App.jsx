@@ -15,10 +15,10 @@ import { SidebarNav, navItems } from './components/SidebarNav';
 // Asset Imports
 import pongDemo from './assets/PongDemo.gif';
 import project2048 from './assets/project2048.gif';
-import ticTacToe from './assets/TicTacToeJS.gif'; 
-import hangMan from './assets/Hangman.gif'; 
-import chessGame from './assets/ChessGame.gif'; 
-import connectFour from './assets/ConnectFour.gif'; 
+import ticTacToe from './assets/TicTacToeJS.gif';
+import hangMan from './assets/Hangman.gif';
+import chessGame from './assets/ChessGame.gif';
+import connectFour from './assets/ConnectFour.gif';
 
 // Data Definitions
 const personalInfo = {
@@ -46,32 +46,38 @@ const projectsData = [
       title: 'Ping Pong Game',
       desc: 'A classic arcade game recreated in Java using AWT and Swing libraries. Features collision detection, smooth gameplay mechanics, and responsive controls.',
       tech: ['Java', 'AWT', 'Swing'],
-      image: pongDemo
+      image: pongDemo,
+      link: 'https://github.com/antoinnedo/Pong-Java'
     }, {
       title: 'Hangman Game',
       desc: 'Classic word-guessing game with dynamic word selection and interactive console interface.',
       tech: ['Ruby'],
-      image: hangMan
+      image: hangMan,
+      link: 'https://github.com/antoinnedo/hangman'
     }, {
       title: '2048',
       desc: 'Implementation of the popular number puzzle game with smooth animations and responsive design. Built with vanilla JavaScript for optimal performance.',
       tech: ['JavaScript', 'HTML5', 'CSS3'],
-      image: project2048
+      image: project2048,
+      link:'https://github.com/antoinnedo/2048'
     }, {
       title: 'Tic Tac Toe',
       desc: 'Interactive web-based version of the classic strategy game featuring AI opponent, win detection algorithms, and clean user interface design.',
       tech: ['JavaScript', 'HTML5', 'CSS3'],
-      image: ticTacToe
+      image: ticTacToe,
+      link:'https://github.com/antoinnedo/TicTacToe-JS'
     }, {
       title: 'Connect Four',
       desc: 'Terminal-based Connect Four game with strategic AI and win detection algorithms.',
       tech: ['Ruby'],
-      image: connectFour
+      image: connectFour,
+      link: 'https://github.com/antoinnedo/connect_four_ruby'
     }, {
       title: 'Chess Board',
       desc: 'Complete chess implementation in Ruby featuring all piece movements, castling, en passant, check/checkmate detection, and console-based interface.',
       tech: ['Ruby'],
-      image: chessGame
+      image: chessGame,
+      link: 'https://github.com/antoinnedo/chess-Ruby'
     }
 ];
 
@@ -117,7 +123,7 @@ export const App = () => {
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.3, 
+      threshold: 0.3,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -129,7 +135,7 @@ export const App = () => {
     }, observerOptions);
 
     const sections = navItems.map(item => document.getElementById(item.href.substring(1)));
-    
+
     sections.forEach(sec => {
       if (sec) {
         observer.observe(sec);
@@ -149,6 +155,7 @@ export const App = () => {
   return (
     <>
       <SidebarNav activeSection={activeSection} />
+      <ThemToggle/>
       <div className="main-content">
         {/* The Header is now wrapped in a section with the correct ID */}
         <section id="header-intro">

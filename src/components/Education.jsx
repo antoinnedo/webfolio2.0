@@ -1,5 +1,4 @@
 import React from 'react';
-
 export const Education = ({ info }) => {
   return (
     <section id="education" >
@@ -9,7 +8,7 @@ export const Education = ({ info }) => {
           <div className="education-header">
             <div className="company-role">
               <h3>{info.university}</h3>
-              <p><strong>{info.degree}</strong></p> 
+              <p><strong>{info.degree}</strong></p>
               <p>GPA: {info.gpa} ({info.honors})</p>
             </div>
             <div className="duration-location">

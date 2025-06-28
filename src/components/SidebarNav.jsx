@@ -42,8 +42,8 @@ export const SidebarNav = ({ activeSection }) => {
       </nav>
 
       <nav className="hamburger-container">
-        <button 
-          className={`hamburger-btn ${toggled ? 'toggled' : ''}`} 
+        <button
+          className={`hamburger-btn ${toggled ? 'toggled' : ''}`}
           onClick={()=>setToggled(!toggled)}
         >
           <HamburgerIcon/>
