@@ -11,7 +11,7 @@ export const customColors = {
 
     // Accent Colors
     accentPrimary: '#305DD0',  
-    accentSecondary: '#FD7559', 
+    accentSecondary: '#305DD0', 
 
     // UI Elements
     border: '#E0E0E0',
@@ -29,7 +29,7 @@ export const customColors = {
 
     // Accent Colors
     accentPrimary: '#FFE537',   // Yellow (primary in dark mode)
-    accentSecondary: '#9D61D8', // Purple (secondary in dark mode)
+    accentSecondary: '#FFE537', // Purple (secondary in dark mode)
 
     // UI Elements
     border: '#404040',
