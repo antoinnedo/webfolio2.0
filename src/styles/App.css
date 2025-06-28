@@ -88,6 +88,41 @@ h3 {
 }
 
 /*
+--- Theme Toggle ---
+*/
+#theme-toggle {
+  height: 3.125rem;
+  width: 3.125rem;
+  border-radius: 50%;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 100;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 0px 4px rgba(83, 127, 231, 0.25);
+}
+
+#light-mode-icon {
+  background: var(--colorbody);
+  color: var(--colorp);
+  border-radius: 50%;
+  height: 3.125rem;
+  width: 3.125rem;
+  z-index: 101;
+}
+
+#dark-mode-icon {
+  background: var(--colorp);
+  color: var(--colorbody);
+  border-radius: 50%;
+  height: 3.125rem;
+  width: 3.125rem;
+  z-index: 101;
+}
+/*
 --- 2. Header / Intro Section ---
 */
 /* Note: The parent <section> tag now provides the min-height */

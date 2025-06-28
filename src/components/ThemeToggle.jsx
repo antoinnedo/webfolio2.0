@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
-import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
+import React from 'react';
+import MoonIcon from '@mui/icons-material/DarkModeRounded';
+import SunIcon from '@mui/icons-material/LightModeRounded';
 
 
-export const ThemeToggleButton = ({ theme, toggleTheme }) => {
+export const ThemeToggle = ({ isDarkMode, onToggle }) => {
   return (
-    <button className="theme-toggle-button" onClick={toggleTheme}>
-      {theme === 'light' ? <MoonIcon /> : <SunIcon />}
-      <span className="tooltip-text">
-        {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-      </span>
-    </button>
+    <>
+      <div className='darkmode'>
+        <button id = 'theme-toggle' onClick={ onToggle }>
+          {isDarkMode ? <SunIcon id='dark-mode-icon' sx={{ color: (theme) => theme.palette.custom.colorp}} /> : <MoonIcon id='light-mode-icon' />}
+        </button>
+      </div>
+    </>
   );
 };

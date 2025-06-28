@@ -1,5 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import theme from './styles/theme';
 import './styles/App.css';
+
+import { customColors } from './styles/colors';
 
 // Component Imports
 import { Contacts } from './components/Contacts';
@@ -9,7 +13,7 @@ import { Experience } from './components/Experience';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Skills } from './components/Skills';
-// Import the Sidebar and its data
+import { ThemeToggle } from './components/ThemeToggle'
 import { SidebarNav, navItems } from './components/SidebarNav';
 
 // Asset Imports
@@ -151,11 +155,46 @@ export const App = () => {
     };
   }, []);
 
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return localStorage.getItem('darkmode') === 'active';
+  });
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('darkmode');
+      localStorage.setItem('darkmode', 'active');
+    } else {
+      document.body.classList.remove('darkmode');
+      localStorage.setItem('darkmode', 'inactive');
+    }
+  },[isDarkMode]);
+
+
+  const handleToggle = () => {
+      setIsDarkMode(prevMode => !prevMode);
+    };
+
+  const theme = useMemo(
+      () =>
+        createTheme({
+          palette: {
+            // This is the key! It tells MUI the mode.
+            mode: isDarkMode ? 'dark' : 'light',
+
+            // You can still add your custom colors
+            custom: {
+              colorp: customColors.brand.colorp,
+              colorbody: customColors.brand.colorbody,
+            },
+          },
+        }),
+      [isDarkMode],
+    );
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <SidebarNav activeSection={activeSection} />
-      <ThemToggle/>
+      <ThemeToggle isDarkMode={isDarkMode} onToggle={handleToggle} />
       <div className="main-content">
         {/* The Header is now wrapped in a section with the correct ID */}
         <section id="header-intro">
@@ -179,6 +218,6 @@ export const App = () => {
             </svg>
           </a>
       </div>
-    </>
+    </ThemeProvider>
   );
 }
