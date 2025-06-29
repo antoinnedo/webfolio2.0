@@ -12,7 +12,7 @@ export const Header = ({ info }) => {
           <p className="description">{info.bio}</p>
           <div className="button-group">
             <a href="#contact" className="contact-icon-link">Get In Touch</a>
-            <a href="https://anthonydo.netlify.app/" className="contact-icon-link">Download Resume</a>
+            <a href="https://drive.google.com/file/d/1oN_VhZi-eH1QKdRmBWqSFLwpER41Epug/view?usp=sharing" className="contact-icon-link">Download Resume</a>
           </div>
         </div>
       </div>
