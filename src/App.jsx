@@ -89,7 +89,7 @@ const projectsData = [
 
 const experienceInfo = [
   {
-    company: "Rakuna HR Solutions Inc.",
+    company: "Rakuna Recruitment Solutions Inc.",
     role: "Software Development Intern",
     period: "June 2025 – November 2025",
     location: "San Francisco, CA",
@@ -157,7 +157,6 @@ export const App = () => {
     };
   }, []);
 
-  // Updated theme state management - removed localStorage for Claude.ai compatibility
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   // Updated theme application
