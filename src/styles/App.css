@@ -18,7 +18,7 @@
   --card-gradient: linear-gradient(145deg, var(--background-card), var(--background-secondary));
 
   /* Shadows */
-  --shadow-subtle: 0px 2px 8px var(--shadow-color);
+  --shadow-subtle: 0px 2px 8px var(--shadow-
   --shadow-medium: 0px 4px 12px var(--shadow-color);
   --shadow-strong: 0px 8px 24px var(--shadow-color);
 
@@ -754,7 +754,7 @@ h3 {
   }
 
   .company-role,
-  .experience-header .duration-location, 
+  .experience-header .duration-location,
   .education-header .duration-location {
     text-align: center;
   }
