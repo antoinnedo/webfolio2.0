@@ -92,7 +92,7 @@ const experienceInfo = [
     company: "Rakuna Recruitment Solutions Inc.",
     role: "Software Development Intern",
     period: "June 2025 – November 2025",
-    location: "San Francisco, CA",
+    location: "Ha Noi, Vietnam",
     details: [
       "Directly involved in the company's product development pipeline",
       "Deployed products that helped achieve 20% productivity increase through code optimization"
